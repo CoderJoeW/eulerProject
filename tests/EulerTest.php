@@ -26,11 +26,11 @@ class EulerTest extends TestCase{
     }
 
     /**
-     * @covers getMultiplesOfXBelowY
+     * @covers getMultiplesOfNumbersBelowY
      * @dataProvider multiplesDataProvider
      */
-    public function testGetMultiplesOfXBelowMax($x, $max, $expected): void{
-        $this->assertEqualsCanonicalizing($expected, $this->euler->getMultiplesOfXBelowMax($x, $max));
+    public function testGetMultiplesOfNumbersBelowMax($findMultiples, $max, $expected): void{
+        $this->assertEqualsCanonicalizing($expected, $this->euler->getMultiplesOfNumbersBelowMax($findMultiples, $max));
     }
 
     public function getSumOfArrayDataProvider(): array{

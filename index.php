@@ -6,7 +6,7 @@ use eulerproject\Euler;
 
 $euler = new Euler();
 
-$multiples = $euler->getMultiplesOfXBelowMax([3, 5], 1000);
+$multiples = $euler->getMultiplesOfNumbersBelowMax([3, 5], 1000);
 
 $sum = $euler->getSumOfArray($multiples);
 
