@@ -4,8 +4,8 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "eulerProject\\": "src/",
-            "eulerProject\\Tests\\": "tests/"
+            "eulerproject\\": "src/",
+            "eulerproject\\Tests\\": "tests/"
         }
     },
     "minimum-stability": "dev",
