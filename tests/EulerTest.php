@@ -27,4 +27,22 @@ class EulerTest extends TestCase{
 
         $this->assertEqualsCanonicalizing($expected, $euler->getMultiplesOfXBelowMax($x, $max));
     }
+
+    public function getSumOfArrayDataProvider(){
+        return [
+            [[2, 4, 6, 8], 20],
+            [[92222, 6462, 45345], 144029],
+            [[3, 5, 6, 9], 23]
+        ];
+    }
+
+    /**
+     * @covers getSumOfArray
+     * @dataProvider getSumOfArrayDataProvider
+     */
+    public function testGetSumOfArray($arr, $expected){
+        $euler = new Euler();
+
+        $this->assertEquals($expected, $euler->getSumOfArray($arr));
+    }
 }
