@@ -8,7 +8,13 @@ use PHPUnit\Framework\TestCase;
 
 class EulerTest extends TestCase{
 
-    public function multiplesDataProvider(){
+    private $euler;
+
+    public function setUp(): void{
+        $euler = new Euler();
+    }
+
+    public function multiplesDataProvider(): array{
         return [
             [[2], 10, [2, 4, 6, 8]],
             [[3], 10, [3, 6, 9]],
@@ -22,13 +28,11 @@ class EulerTest extends TestCase{
      * @covers getMultiplesOfXBelowY
      * @dataProvider multiplesDataProvider
      */
-    public function testGetMultiplesOfXBelowMax($x, $max, $expected){
-        $euler = new Euler();
-
-        $this->assertEqualsCanonicalizing($expected, $euler->getMultiplesOfXBelowMax($x, $max));
+    public function testGetMultiplesOfXBelowMax($x, $max, $expected): void{
+        $this->assertEqualsCanonicalizing($expected, $this->euler->getMultiplesOfXBelowMax($x, $max));
     }
 
-    public function getSumOfArrayDataProvider(){
+    public function getSumOfArrayDataProvider(): array{
         return [
             [[2, 4, 6, 8], 20],
             [[92222, 6462, 45345], 144029],
@@ -40,9 +44,7 @@ class EulerTest extends TestCase{
      * @covers getSumOfArray
      * @dataProvider getSumOfArrayDataProvider
      */
-    public function testGetSumOfArray($arr, $expected){
-        $euler = new Euler();
-
-        $this->assertEquals($expected, $euler->getSumOfArray($arr));
+    public function testGetSumOfArray($arr, $expected): void{
+        $this->assertEquals($expected, $this->euler->getSumOfArray($arr));
     }
 }
