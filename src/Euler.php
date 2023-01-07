@@ -14,10 +14,16 @@ class Euler{
                 if($multiple < $max){
                     array_push($multiples, $i * $m);
                 }
+
+                if($i % 50000 === 0){
+                    $multiples = array_unique($multiples);
+                }
             }
+
+            $multiples = array_unique($multiples);
         }
 
-        return array_unique($multiples);
+        return $multiples;
     }
 
     public function getSumOfArray(array $arr): int{
