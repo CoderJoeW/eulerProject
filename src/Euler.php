@@ -17,7 +17,7 @@ class Euler{
             }
         }
 
-        return $multiples;
+        return array_unique($multiples);
     }
 
 }
