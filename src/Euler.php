@@ -8,7 +8,7 @@ class Euler{
         $factors = [];
 
         foreach($numbers as $number){
-            for($i = 1; $i < $max; $i++){
+            for($i = $number; $i < $max; $i++){
                 if($i % $number === 0){
                     array_push($factors, $i);
 
