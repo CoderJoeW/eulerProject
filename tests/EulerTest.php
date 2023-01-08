@@ -48,4 +48,13 @@ class EulerTest extends TestCase{
     public function testGetSumOfArray($arr, $expected): void{
         $this->assertEquals($expected, $this->euler->getSumOfArray($arr));
     }
+
+    /**
+     * @covers getMultiplesOfNumbersBelowY
+     */
+    public function testSolvesProblem1(){
+        $answer = $this->euler->getMultiplesOfNumbersBelowMax([3, 5], 1000);
+
+        $this->assertEquals(233168, $this->euler->getSumOfArray($answer));
+    }
 }
