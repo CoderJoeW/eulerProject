@@ -15,15 +15,15 @@ class Euler{
             for($i = $number; $i < $max; $i++){
                 if($i % $number === 0){
                     if(($i  * $number) % $lcm === 0){
-                        array_push($duplicates, $i);
+                        $duplicates[] = $i;
                     }else{
-                        array_push($factors, $i);
+                        $factors[] = $i;
                     }
                 }
             }
         }
 
-        $factors = array_merge($factors, $duplicates);
+        $factors = array_merge($factors, $this->dropDuplicates($duplicates));
 
         return array_flip(array_flip($factors));
     }
@@ -36,7 +36,7 @@ class Euler{
 
             $fCount = array_count_values($factors);
 
-            array_push($factorCounts, $fCount);
+            $factorCounts[] = $fCount;
         }
 
         $highestPowers = [];
@@ -68,7 +68,7 @@ class Euler{
         $i = 2;
         while ($number !== 1){
             if($number % $i === 0){
-                array_push($primeNumbers, $i);
+                $primeNumbers[] = $i;
 
                 $number = $number / $i;
             }else{
