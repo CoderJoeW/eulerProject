@@ -75,4 +75,21 @@ class EulerTest extends TestCase{
     public function testGetPrimeFactors($number, $expected): void{
         $this->assertEqualsCanonicalizing($expected, $this->euler->getPrimeFactors($number));
     }
+
+    public function getLeastCommonMultipleDataProvider(): array{
+        return [
+            [[10, 35], 70],
+            [[40, 82], 1640],
+            [[100, 1000], 1000],
+            [[40, 36, 126], 2520]
+        ];
+    }
+
+    /**
+     * @covers getLeastCommonMultiple
+     * @dataProvider getLeastCommonMultipleDataProvider
+     */
+    public function testGetLeastCommonMultiple($numbers, $expected): void{
+        $this->assertEquals($expected, $this->euler->getLeastCommonMultiple($numbers));
+    }
 }

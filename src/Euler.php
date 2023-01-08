@@ -22,17 +22,53 @@ class Euler{
         return array_unique($factors);
     }
 
+    public function getLeastCommonMultiple($numbers): int{
+        $factorCounts = [];
+
+        foreach($numbers as $num){
+            $factors = $this->getPrimeFactors($num);
+
+            $fCount = array_count_values($factors);
+
+            array_push($factorCounts, $fCount);
+        }
+
+        $highestPowers = [];
+
+        foreach($factorCounts as $fc){
+            foreach($fc as $key => $value){
+                if(array_key_exists($key, $highestPowers)){
+                    if($highestPowers[$key] < $value){
+                        $highestPowers[$key] = $value;
+                    }
+                }else{
+                    $highestPowers[$key] = $value;
+                }
+            }
+        }
+
+        $lcm = 1;
+
+        foreach($highestPowers as $key => $value){
+            if($value == 2){
+                $value--;
+            }
+
+            $lcm *= pow($key, $value);
+        }
+
+        return $lcm;
+    }
+
     public function getPrimeFactors($number): array{
         $primeNumbers = [];
 
-        $current = $number;
-
         $i = 2;
-        while ($current !== 1){
-            if($current % $i === 0){
+        while ($number !== 1){
+            if($number % $i === 0){
                 array_push($primeNumbers, $i);
 
-                $current = $current / $i;
+                $number = $number / $i;
             }else{
                 $i++;
             }
