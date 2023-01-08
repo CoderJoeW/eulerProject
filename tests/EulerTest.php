@@ -52,9 +52,27 @@ class EulerTest extends TestCase{
     /**
      * @covers getMultiplesOfNumbersBelowY
      */
-    public function testSolvesProblem1(){
+    public function testSolvesProblem1(): void{
         $answer = $this->euler->getMultiplesOfNumbersBelowMax([3, 5], 1000);
 
         $this->assertEquals(233168, $this->euler->getSumOfArray($answer));
+    }
+
+    public function getPrimeFactorsDataProvider(): array{
+        return [
+            [12, [2, 2, 3]],
+            [36, [2, 2, 3, 3]],
+            [126, [2, 3, 3, 7]],
+            [460, [2, 2, 5, 23]],
+            [2354, [2, 11, 107]]
+        ];
+    }
+
+    /**
+     * @covers getPrimeFactors
+     * @dataProvider getPrimeFactorsDataProvider
+     */
+    public function testGetPrimeFactors($number, $expected): void{
+        $this->assertEqualsCanonicalizing($expected, $this->euler->getPrimeFactors($number));
     }
 }
