@@ -27,12 +27,11 @@ class Euler{
         }
 
         if(count($numbers) > 1){
-            for ($i = 1; $i < $max; $i++){
+            $i = 1;
+            while(($i * $lcm) < $max){
                 $m = $i * $lcm;
-    
-                if($m < $max){
-                    $factors[] = $m;
-                }
+                $factors[] = $m;
+                $i++;
             }
         }
 
