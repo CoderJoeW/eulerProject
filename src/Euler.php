@@ -4,30 +4,25 @@ namespace eulerproject;
 
 class Euler{
 
-    public function getMultiplesOfNumbersBelowMax(array $findMultiples, int $max): array{
-        $multiples = [];
+    public function getMultiplesOfNumbersBelowMax(array $numbers, int $max): array{
+        $factors = [];
 
-        foreach($findMultiples as $m){
-            for ($i = 1; $i < $max; $i++){
-                $multiple = $i * $m;
-    
-                if($multiple < $max){
-                    array_push($multiples, $i * $m);
-                }
+        foreach($numbers as $number){
+            for($i = 1; $i < $max; $i++){
+                if($i % $number === 0){
+                    array_push($factors, $i);
 
-                if($i % 50000 === 0){
-                    $multiples = array_unique($multiples);
+                    if($i % 50000 === 0){
+                        $factors = array_unique($factors);
+                    }
                 }
             }
-
-            $multiples = array_unique($multiples);
         }
 
-        return $multiples;
+        return array_unique($factors);
     }
 
     public function getSumOfArray(array $arr): int{
         return array_sum($arr);
     }
-
 }
