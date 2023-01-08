@@ -25,7 +25,7 @@ class Euler{
 
         $factors = array_merge($factors, $duplicates);
 
-        return array_unique($factors);
+        return array_flip(array_flip($factors));
     }
 
     public function getLeastCommonMultiple($numbers): int{
