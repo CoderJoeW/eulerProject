@@ -9,7 +9,7 @@ class Euler{
 
         foreach($numbers as $number){
             for($i = $number; $i < $max; $i++){
-                if($i % $number === 0){
+                if($this->isDivisible($i, $number)){
                     $factors[] = $i;
                 }
             }
@@ -75,5 +75,9 @@ class Euler{
 
     public function dropDuplicates($numbers): array{
         return array_values(array_flip(array_flip($numbers)));
+    }
+
+    public function isDivisible($x, $y): bool{
+        return $x % $y === 0;
     }
 }

@@ -99,4 +99,19 @@ class EulerTest extends TestCase{
     public function testDropDuplicates(){
         $this->assertEquals([1, 2, 3], $this->euler->dropDuplicates([1, 1, 2, 2, 3, 3]));
     }
+
+    public function isDivisibleDataProvider(){
+        return [
+            [5, 2, false],
+            [4, 2, true]
+        ];
+    }
+
+    /**
+     * @covers isDivisible
+     * @dataProvider isDivisibleDataProvider
+     */
+    public function testIsDivisible($x, $y, $expected){
+        $this->assertEquals($expected, $this->euler->isDivisible($x, $y));
+    }
 }
