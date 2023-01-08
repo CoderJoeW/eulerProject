@@ -7,15 +7,36 @@ class Euler{
     public function getMultiplesOfNumbersBelowMax(array $numbers, int $max): array{
         $factors = [];
 
+        $numbers = $this->dropDuplicates($numbers);
+
+        $lcm = $this->getLeastCommonMultiple($numbers);
+
         foreach($numbers as $number){
             for($i = $number; $i < $max; $i++){
                 if($this->isDivisible($i, $number)){
+                    if(count($numbers) > 1){
+                        if(!$this->isDivisible($i * $number, $lcm)){
+                            $factors[] = $i;
+                        }
+                        continue;
+                    }
+
                     $factors[] = $i;
                 }
             }
         }
 
-        return $this->dropDuplicates($factors);
+        if(count($numbers) > 1){
+            for ($i = 1; $i < $max; $i++){
+                $m = $i * $lcm;
+    
+                if($m < $max){
+                    $factors[] = $m;
+                }
+            }
+        }
+
+        return $factors;
     }
 
     public function getLeastCommonMultiple($numbers): int{
