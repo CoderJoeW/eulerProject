@@ -82,4 +82,8 @@ class Euler{
     public function getSumOfArray(array $arr): int{
         return array_sum($arr);
     }
+
+    public function dropDuplicates($numbers): array{
+        return array_values(array_flip(array_flip($numbers)));
+    }
 }

@@ -92,4 +92,11 @@ class EulerTest extends TestCase{
     public function testGetLeastCommonMultiple($numbers, $expected): void{
         $this->assertEquals($expected, $this->euler->getLeastCommonMultiple($numbers));
     }
+
+    /**
+     * @covers dropDuplicates
+     */
+    public function testDropDuplicates(){
+        $this->assertEquals([1, 2, 3], $this->euler->dropDuplicates([1, 1, 2, 2, 3, 3]));
+    }
 }
