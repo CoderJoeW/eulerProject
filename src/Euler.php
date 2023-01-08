@@ -50,10 +50,6 @@ class Euler{
         $lcm = 1;
 
         foreach($highestPowers as $key => $value){
-            if($value == 2){
-                $value--;
-            }
-
             $lcm *= pow($key, $value);
         }
 
